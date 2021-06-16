@@ -1,11 +1,9 @@
 version: 0.2
 phases:
-  pre_build:
-    commands:
-      - cd Lambda2
   build:
     commands:
       - echo "Zipping deployment package..."
+      - cd  Lambda2
       - zip -r -g deployment_package.zip . #
   post_build:
     commands:
