@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+      - cd myLambdaFunc
+      - zip -r -g deployment_package.zip .
+  post_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name myLambdaFunc --zip-file fileb://deployment_package.zip
+      - echo "DONE!!"
